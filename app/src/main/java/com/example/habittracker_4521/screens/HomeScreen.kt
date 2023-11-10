@@ -34,6 +34,9 @@ import androidx.compose.ui.unit.dp
 import java.text.SimpleDateFormat
 import java.util.*
 
+
+// This is the main function of the screen
+// Contains the entire layout of the Home Screen of the application
 @Composable
 fun HomeScreen() {
     Column(
@@ -71,6 +74,8 @@ fun HomeScreen() {
     }
 }
 
+//Button to add a Habit to the list of habits
+//TODO : Build UI of habit form and connect the onClick()
 @Composable
 fun AddButton(onClick: () -> Unit) {
     IconButton(
@@ -91,7 +96,8 @@ fun AddButton(onClick: () -> Unit) {
 }
 
 
-
+//This is the UI component to get the previoius 5 days of the week
+//TODO : Reverse the order of the dates
 @Composable
 fun LastFiveDaysOfWeek() {
     val calendar = Calendar.getInstance()
@@ -116,6 +122,8 @@ fun LastFiveDaysOfWeek() {
     }
 }
 
+//This button is the icon button inside each habit
+//TODO : Need to connect to backend functionality for different days of the week
 @Composable
 fun TickIconButton()
 {
@@ -138,6 +146,8 @@ fun TickIconButton()
     }
 }
 
+//This is the UI component of the habit card
+//TODO : Need to figure out the % calculation and movement of ticks dynamically
 @Composable
 fun HabitCard(habit_name: String, background_color: Color, onClick: () -> Unit = {
     Log.d("ClickableComposable", "Clicked!")
