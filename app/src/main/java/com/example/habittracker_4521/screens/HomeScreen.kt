@@ -75,7 +75,6 @@ fun HomeScreen() {
 }
 
 //Button to add a Habit to the list of habits
-//TODO : Build UI of habit form and connect the onClick()
 @Composable
 fun AddButton(onClick: () -> Unit) {
     IconButton(
@@ -96,26 +95,40 @@ fun AddButton(onClick: () -> Unit) {
 }
 
 
-//This is the UI component to get the previoius 5 days of the week
+//This is the UI component to get the previous 5 days of the week
 //TODO : Reverse the order of the dates
 @Composable
 fun LastFiveDaysOfWeek() {
     val calendar = Calendar.getInstance()
     val dateFormat = SimpleDateFormat("MMM dd", Locale.getDefault())
 
+    val dayOfWeekArray : MutableList<String> = ArrayList()
+    val datesArray : MutableList<String> = ArrayList()
+
+    for (i in 1 .. 5) {
+        val date = dateFormat.format(calendar.time)
+        val dayOfWeek = calendar.getDisplayName(Calendar.DAY_OF_WEEK, Calendar.SHORT, Locale.getDefault())
+
+        dayOfWeekArray.add(dayOfWeek.toString())
+        datesArray.add(date.toString())
+
+
+        calendar.add(Calendar.DAY_OF_WEEK, -1)
+    }
+
+
+
     Row(modifier = Modifier
         .fillMaxWidth()
         .padding(vertical = 10.dp)
         ,horizontalArrangement = Arrangement.End
     ) {
-        for (i in 1..5){
-            val date = dateFormat.format(calendar.time)
-            val dayOfWeek = calendar.getDisplayName(Calendar.DAY_OF_WEEK, Calendar.SHORT, Locale.getDefault())
+        for (i in 0 .. 4){
 
             Column(modifier = Modifier.padding(end = 5.dp))
             {
-                Text("${dayOfWeek}")
-                Text(text=date)
+                Text(dayOfWeekArray[4-i])
+                Text(text=datesArray[4-i])
             }
             calendar.add(Calendar.DAY_OF_WEEK, -1)
         }
