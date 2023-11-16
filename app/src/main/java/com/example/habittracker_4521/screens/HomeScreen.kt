@@ -31,6 +31,7 @@ import androidx.compose.ui.text.toUpperCase
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.sp
 import androidx.compose.ui.unit.dp
+import androidx.navigation.NavController
 import java.text.SimpleDateFormat
 import java.util.*
 
@@ -38,7 +39,7 @@ import java.util.*
 // This is the main function of the screen
 // Contains the entire layout of the Home Screen of the application
 @Composable
-fun HomeScreen() {
+public fun HomeScreen() {
     Column(
         modifier = Modifier
             .fillMaxWidth()
@@ -68,8 +69,6 @@ fun HomeScreen() {
             HabitCard(habit_name = "Play Chess", background_color = Color.Cyan)
             HabitCard(habit_name = "Journal", background_color = Color.Blue)
             HabitCard(habit_name = "DJ", background_color = Color.Yellow)
-
-
         }
     }
 }
@@ -96,7 +95,6 @@ fun AddButton(onClick: () -> Unit) {
 
 
 //This is the UI component to get the previous 5 days of the week
-//TODO : Reverse the order of the dates
 @Composable
 fun LastFiveDaysOfWeek() {
     val calendar = Calendar.getInstance()
@@ -181,7 +179,7 @@ fun HabitCard(habit_name: String, background_color: Color, onClick: () -> Unit =
 
         ) {
 
-            Text(text = "50%", fontSize = 18.sp)
+            Text(text = "%", fontSize = 18.sp)
             Row(modifier = Modifier
                 .fillMaxWidth()
 //                .padding(horizontal = 10.dp)
