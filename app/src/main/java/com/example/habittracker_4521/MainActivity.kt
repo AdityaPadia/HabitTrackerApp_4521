@@ -9,9 +9,7 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.core.view.WindowCompat
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
-import androidx.navigation.NavController
-import androidx.navigation.compose.NavHost
-import androidx.navigation.compose.rememberNavController
+import com.example.habittracker_4521.screens.CalendarScreen
 import com.example.habittracker_4521.screens.HomeScreen
 
 
@@ -19,8 +17,8 @@ class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContent {
-            //Setting Content of the MainActivity to HomeScreen.kt
-            HomeScreen()
+            //Setting Content of the MainActivity to CalendarScreen.kt
+            CalendarScreen()
 
         }
     }
