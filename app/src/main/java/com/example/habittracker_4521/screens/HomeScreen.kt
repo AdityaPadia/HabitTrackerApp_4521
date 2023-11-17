@@ -185,11 +185,10 @@ fun HabitCard(habit_name: String, background_color: Color, onClick: () -> Unit =
 //                .padding(horizontal = 10.dp)
                 ,horizontalArrangement = Arrangement.End
             ) {
-                TickIconButton()
-                TickIconButton()
-                TickIconButton()
-                TickIconButton()
-                TickIconButton()
+                //5 tick buttons for last 5 day habits
+                for (i in 1..5){
+                    TickIconButton()
+                }
             }
         }
         Row(modifier = Modifier
