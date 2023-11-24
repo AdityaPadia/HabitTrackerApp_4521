@@ -19,6 +19,7 @@ import androidx.compose.material3.Text
 import androidx.navigation.compose.NavHost
 import com.example.habittracker_4521.screens.HomeScreen
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.getValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.vector.ImageVector
 import androidx.compose.ui.res.vectorResource
@@ -28,6 +29,7 @@ import androidx.navigation.NavDestination
 import androidx.navigation.NavDestination.Companion.hierarchy
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.composable
+import androidx.navigation.compose.currentBackStackEntryAsState
 import com.example.habittracker_4521.screens.CalendarScreen
 
 @Composable
@@ -50,9 +52,12 @@ fun Navigation(navController: NavHostController) {
 @Composable
 fun BottomNavigation(
     routes: List<Routes>,
-    currentRoute : NavDestination,
-    onNavigateToDestination: (route: String) -> Unit
+    onNavigateToDestination: (route: String) -> Unit,
+    navController: NavController
 ) {
+    val navBackStackEntry by navController.currentBackStackEntryAsState()
+    val currentRoute = navBackStackEntry?.destination?.route as NavDestination
+
     NavigationBar(
         modifier = Modifier
             .windowInsetsPadding(

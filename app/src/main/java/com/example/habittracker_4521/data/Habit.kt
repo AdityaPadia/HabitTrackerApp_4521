@@ -12,7 +12,7 @@ data class Habit(
     @PrimaryKey(autoGenerate = true)
     @NotNull
     @ColumnInfo(name = "id")
-    var id: Int,
+    var id: Int = 0,
 
     @ColumnInfo(name = "habit_name")
     var habitName: String?,

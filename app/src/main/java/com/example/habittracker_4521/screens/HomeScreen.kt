@@ -16,6 +16,7 @@ import androidx.compose.material3.IconButton
 import androidx.compose.material3.Text
 import androidx.compose.material3.TextButton
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.setValue
 import androidx.compose.runtime.mutableStateOf
@@ -32,23 +33,40 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.sp
 import androidx.compose.ui.unit.dp
 import androidx.navigation.NavController
+import androidx.room.Room
+import com.example.habittracker_4521.data.Habit
+import com.example.habittracker_4521.data.HabitDatabase
+import com.example.habittracker_4521.viewmodel.HomeViewModel
 import java.text.SimpleDateFormat
 import java.util.*
 
 
 // This is the main function of the screen
 // Contains the entire layout of the Home Screen of the application
+
+
+
 @Composable
 public fun HomeScreen() {
+
+    var habit by remember { mutableStateOf(Habit(habitName = null, complete = null)) }
+    var isLoading by remember { mutableStateOf(true) }
+
+    LaunchedEffect(Unit) {
+        isLoading = true
+        //Get Data
+        isLoading = false
+    }
+
     Column(
         modifier = Modifier
             .fillMaxWidth()
             .padding(10.dp)
     ) {
         Row(
-            modifier = Modifier.fillMaxWidth()
-            ,horizontalArrangement = Arrangement.End
-            ,verticalAlignment = Alignment.CenterVertically
+            modifier = Modifier.fillMaxWidth(),
+            horizontalArrangement = Arrangement.End,
+            verticalAlignment = Alignment.CenterVertically
         ) {
             Text(text = "Add Habit")
             AddButton(onClick = {Log.d("AddButton", "ClickedAddButton!")})
@@ -64,11 +82,12 @@ public fun HomeScreen() {
                 .verticalScroll(rememberScrollState())
                 .weight(weight = 1f, fill = false)
         ) {
+
             HabitCard(habit_name = "Read", background_color = Color.Green)
             HabitCard(habit_name = "Meditate", background_color = Color.LightGray)
             HabitCard(habit_name = "Play Chess", background_color = Color.Cyan)
             HabitCard(habit_name = "Journal", background_color = Color.Blue)
-            HabitCard(habit_name = "DJ", background_color = Color.Yellow)
+//            HabitCard(habit_name = "DJ", background_color = Color.Yellow)
         }
     }
 }
@@ -200,12 +219,6 @@ fun HabitCard(habit_name: String, background_color: Color, onClick: () -> Unit =
         }
     }
 
-}
-
-@Preview
-@Composable
-fun PreviewHomeScreenCard() {
-    HomeScreen()
 }
 
 

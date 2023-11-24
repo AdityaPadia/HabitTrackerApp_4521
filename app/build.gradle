@@ -76,6 +76,8 @@ dependencies {
 
     implementation 'androidx.activity:activity-compose:1.4.0'
 
+    implementation 'androidx.hilt:hilt-navigation-fragment:1.1.0'
+
 }
 
 
