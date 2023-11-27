@@ -21,8 +21,6 @@ import com.example.habittracker_4521.screens.HomeScreen
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.graphics.vector.ImageVector
-import androidx.compose.ui.res.vectorResource
 import androidx.compose.ui.unit.dp
 import androidx.navigation.NavController
 import androidx.navigation.NavDestination
@@ -33,7 +31,7 @@ import androidx.navigation.compose.currentBackStackEntryAsState
 import com.example.habittracker_4521.screens.CalendarScreen
 
 @Composable
-fun Navigation(navController: NavHostController) {
+fun NavigationGraph(navController: NavHostController) {
 
     NavHost(navController = navController,
             startDestination = Routes.Home.route,

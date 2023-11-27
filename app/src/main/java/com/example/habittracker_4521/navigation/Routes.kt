@@ -2,6 +2,7 @@ package com.example.habittracker_4521.navigation
 
 
 import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.outlined.Add
 import androidx.compose.material.icons.outlined.DateRange
 import androidx.compose.material.icons.outlined.Home
 import androidx.compose.material.icons.rounded.Home
@@ -21,5 +22,10 @@ sealed class Routes(val route: String, val title: String? = null, val icon: Imag
         title = "Calendar",
         icon = Icons.Outlined.DateRange
         )
+    object AddHabit: Routes(
+        route = "AddHabit",
+        title = "Add Habit",
+        icon = Icons.Outlined.Add
+    )
 
 }
